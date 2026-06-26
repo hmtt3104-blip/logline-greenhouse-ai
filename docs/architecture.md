@@ -12,17 +12,17 @@ Camera / Picamera2
 
 ```text
 Camera frame
-  -> reference capture
-  -> reference/me.jpg
+  -> local reference capture
+  -> private local reference image
   -> reference matching
-  -> reference/last_test.jpg
+  -> private local comparison output
   -> dashboard result
 ```
 
 ```text
 Camera frame
   -> OpenCV HOG person detection
-  -> alert snapshot
+  -> local alert snapshot
   -> optional Telegram photo alert
   -> detection status API
 ```
@@ -79,6 +79,8 @@ Current matching path:
 - OpenCV ORB when available;
 - Pillow dHash fallback when OpenCV is unavailable.
 
+Real reference images are local-only and are not part of this public export.
+
 ### `dashboard/telegram_config.py`
 
 Loads and saves Telegram settings from environment variables or local instance config.
@@ -99,7 +101,7 @@ Current source of truth:
 - setup and safety docs in `docs/`;
 - experiment records in `experiments/`.
 
-The committed image artifacts in `reference/` and `test.jpg` are not source-of-truth. They are public cleanup blockers.
+Real reference images are not source-of-truth for this public repository. The `reference/` directory contains only usage notes, and private image files are ignored by Git.
 
 ## Future architecture questions
 
