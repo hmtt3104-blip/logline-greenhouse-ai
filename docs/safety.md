@@ -1,24 +1,23 @@
 # Safety and Security Notes
 
-Current public-readiness status: `Public cleanup required`.
+Current public-readiness status: `Sanitized public export`.
 
-This repository is a sanitized public Logline export. The working/private `greenhouse_ai` repository may contain local experiment history and is maintained separately.
+This repository is a sanitized public Logline export. The private working repository is maintained separately and is not part of this public history.
 
-## Public image cleanup status
+## Public image status
 
-The following image artifacts were removed from the current tree:
+This export does not include real reference images or old working-repository history.
 
-- `reference/me.jpg`
-- `reference/last_test.jpg`
-- `test.jpg`
+The public tree intentionally contains only notes for image-related directories:
 
-This export does not include the old Git history. If publishing from the original working repository instead, historical GitHub history still needs review before flagship/public-ready status.
+- `reference/README.md`
+- `images/README.md`
 
-Real reference images are not committed. Use local private images only.
+Real reference images are local-only. Use synthetic or sanitized images for future public examples.
 
 ## Dashboard exposure
 
-The app can bind to different hosts through `DASHBOARD_HOST`.
+The dashboard should be tested locally first.
 
 Recommended local-only value:
 
@@ -26,76 +25,50 @@ Recommended local-only value:
 DASHBOARD_HOST=127.0.0.1
 ```
 
-Riskier LAN-exposed value:
+LAN-exposed mode:
 
 ```text
 DASHBOARD_HOST=0.0.0.0
 ```
 
-`0.0.0.0` makes the dashboard reachable from other devices on the network when firewall and routing allow it. Do not use this mode with real camera feeds, Telegram settings, or greenhouse controls unless the network exposure is intentional and protected.
+`0.0.0.0` can expose the dashboard to other devices on the network. Use it only when the network exposure is intentional and protected.
 
-## Telegram token handling
+## External service settings
 
-Telegram tokens and chat IDs must stay local.
+Any messaging or notification integration must use local configuration only.
 
-Allowed local locations:
-
-- `.env` ignored by Git;
-- local Flask `instance/telegram.json` ignored by Git.
-
-Never commit:
-
-- `TELEGRAM_BOT_TOKEN`;
-- `TELEGRAM_CHAT_ID`;
-- copied bot URLs containing tokens;
-- screenshots showing Telegram credentials.
-
-If a token is exposed, rotate it before continuing public work.
+Do not commit private runtime configuration, chat identifiers, service credentials, copied request URLs, or screenshots that reveal private settings.
 
 ## Camera privacy
 
-Camera frames can expose people, property, greenhouse layout, timestamps, or other private context.
+Camera frames can reveal people, property, greenhouse layout, timestamps, or other private context.
 
 Rules for public examples:
 
 - use synthetic or sanitized images;
 - crop private surroundings;
-- strip EXIF metadata;
-- do not publish reference face/person images;
+- strip image metadata;
+- do not publish person reference images;
 - do not publish alert snapshots from real deployments.
 
-## EXIF/image artifacts
+## Public image metadata
 
-Before public flagship use:
+Before adding public images:
 
-- confirm image artifacts are absent from the current tree;
-- review historical GitHub history for old image artifacts;
-- strip EXIF from any retained images;
-- verify screenshots do not show tokens, IPs, file paths, or private dashboards.
+- confirm the image is safe for publication;
+- strip metadata;
+- verify screenshots do not show private settings, file paths, dashboards, or network details;
+- keep private reference images out of Git.
 
-## No production secrets
+## No private runtime configuration
 
-This repository must not contain:
+This repository must not contain private deployment files, private keys, Wi-Fi credentials, real runtime settings, or environment files from deployed systems.
 
-- real API keys;
-- Telegram bot tokens;
-- production `.env`;
-- private keys;
-- Wi-Fi credentials;
-- private deployment configs.
-
-## No public live deployment configs
+## No public live deployment details
 
 Public documentation should use placeholders, not live infrastructure details.
 
-Do not publish:
-
-- production IPs;
-- VPN/Tailscale details;
-- live dashboard URLs;
-- private network maps;
-- production logs;
-- real alert photos.
+Do not publish production IPs, VPN details, live dashboard URLs, private network maps, logs, or real alert photos.
 
 ## Before flagship public use
 
