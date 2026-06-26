@@ -178,5 +178,5 @@ Raspberry Pi camera and OpenCV setup notes are in `docs/setup.md`.
 ## Related repositories
 
 - `logline-foundation`: public standards and operating model for Logline.
-- `logline-greenhouse-edge`: Raspberry Pi edge runtime export, not published yet.
+- `logline-greenhouse-edge`: sanitized Raspberry Pi edge runtime experiments for greenhouse climate telemetry and supervision.
 - Future `logline-greenhouse-firmware`: ESP32 / greenhouse controller firmware export.
