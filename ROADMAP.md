@@ -4,13 +4,15 @@
 
 Repo status: `Prototype`
 
-Public readiness: `NEEDS_CLEANUP`
+Public readiness: `SANITIZED_PUBLIC_EXPORT`
 
-Reason: committed image artifacts must be replaced or sanitized before flagship public use.
+Reason: this repository is a clean public Logline export. It does not include real reference images, old working-repository history, production configs, or deployment secrets.
 
 ## Near-term
 
-- [ ] Replace or sanitize `reference/me.jpg`, `reference/last_test.jpg`, and `test.jpg`.
+- [x] Publish a sanitized public export without old working-repository history.
+- [x] Keep real reference images out of the public tree.
+- [x] Document public image and camera privacy rules.
 - [ ] Add sanitized architecture diagram or screenshot assets under `images/`.
 - [ ] Document Raspberry Pi hardware setup under `hardware/`.
 - [ ] Decide safe default dashboard host behavior.
@@ -33,18 +35,18 @@ Reason: committed image artifacts must be replaced or sanitized before flagship 
 - [ ] Sanitized demo images.
 - [ ] Public-readiness checklist result.
 
-## Cleanup required
+## Cleanup / review still required
 
-- [ ] Image/EXIF cleanup.
-- [ ] Git history / secret scanning review.
 - [ ] Dashboard security review.
-- [ ] Confirm no production configs are present.
+- [ ] Confirm no production configs are present before each major public update.
+- [ ] Confirm future public images are synthetic or sanitized and metadata-stripped.
+- [ ] Keep private working-repository history separate from this public export.
 
 ## Release candidates
 
 No release should be created until:
 
-- public cleanup blockers are resolved;
-- README/docs are complete;
 - setup is reproducible;
-- safety notes are current.
+- safety notes are current;
+- at least one real hardware/camera experiment is documented;
+- the repository has a clear public-readiness checklist result.
