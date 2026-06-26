@@ -2,37 +2,41 @@
 
 ## Current status
 
-Public readiness: `NEEDS_CLEANUP`
+Public readiness: `SANITIZED_PUBLIC_EXPORT`
 
-Known blocker:
-
-- committed image artifacts in `reference/` and `test.jpg` must be replaced or sanitized before flagship public use.
+This repository is a clean public Logline export. The private working repository is maintained separately and is not part of this public history.
 
 ## What must not be committed
 
 - `.env`
-- Telegram bot tokens
-- Telegram chat IDs
+- private runtime configuration
+- notification or messaging credentials
 - private keys
-- production configs
+- deployment configs from real systems
 - private IPs or deployment maps
 - production logs
 - personal images
-- EXIF-bearing public assets
+- metadata-bearing public assets
 
-## Telegram tokens
+## External service settings
 
-Telegram credentials must stay local.
+External service credentials must stay local.
 
 Use local `.env` or ignored local instance settings only.
 
-If a token is exposed publicly, rotate it before continuing public work.
+If a credential is exposed publicly, rotate it before continuing public work.
 
 ## Dashboard exposure
 
 Use `127.0.0.1` for local-only testing.
 
-Do not expose the dashboard with real camera feeds or credentials unless the deployment is intentionally secured.
+Do not expose the dashboard with real camera feeds, private settings, or credentials unless the deployment is intentionally secured.
+
+## Images and camera data
+
+Camera frames and reference images can reveal people, property, greenhouse layout, timestamps, or private environment details.
+
+Public examples must use synthetic or sanitized images with metadata removed.
 
 ## Reporting security issues
 
@@ -42,4 +46,4 @@ Report the type of issue and affected file path without repeating the secret val
 
 ## Cleanup checklist
 
-Before this repository is pinned or treated as flagship-ready, run the Logline public repository cleanup checklist.
+Before this repository is pinned or treated as flagship-ready, run the Logline public repository cleanup checklist and record the result.
