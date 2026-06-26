@@ -6,6 +6,14 @@
 
 This repository is a sanitized public Logline export and an early flagship example: an engineering journal where the experiment, failures, safety boundaries, and next questions are documented alongside the code.
 
+## Foundation
+
+This repository follows the public standards and operating model defined in:
+
+https://github.com/hmtt3104-blip/logline-foundation
+
+Logline Foundation defines how public experiments are documented, reviewed, sanitized, and linked across repositories.
+
 ## Problem
 
 Small greenhouse automation work often starts as working scripts and field tests, but the reasoning becomes scattered: camera setup, alerting, dashboard behavior, sensor assumptions, and hardware limitations are hard to reconstruct later.
@@ -166,3 +174,9 @@ Raspberry Pi camera and OpenCV setup notes are in `docs/setup.md`.
 - `experiments/2026-04-17-flask-dashboard-bootstrap.md`
 - `experiments/2026-04-18-person-detection-opencv-hog.md`
 - `experiments/2026-04-18-telegram-alert-pipeline.md`
+
+## Related repositories
+
+- `logline-foundation`: public standards and operating model for Logline.
+- `logline-greenhouse-edge`: Raspberry Pi edge runtime export, not published yet.
+- Future `logline-greenhouse-firmware`: ESP32 / greenhouse controller firmware export.
