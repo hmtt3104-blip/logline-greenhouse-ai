@@ -11,9 +11,16 @@ All notable changes to this repository should be documented here.
 - Initial experiment record drafts.
 - Roadmap, security, and contributing documentation.
 
+### Changed
+
+- Aligned README, architecture notes, safety notes, roadmap, and security policy with the sanitized public export model.
+- Clarified that real reference images are local-only and are not part of this public repository.
+- Clarified that the private working repository is maintained separately from this public export.
+
 ### Security
 
-- Marked committed image artifacts as public cleanup blockers.
+- Published this repository as a clean public export without old working-repository history.
+- Documented image, camera privacy, and private runtime configuration boundaries.
 
 ## 2026-04-18 - Prototype snapshot
 
@@ -28,5 +35,5 @@ All notable changes to this repository should be documented here.
 
 ### Notes
 
-- Status: `Prototype / Public cleanup required`.
+- Status: `Prototype / Sanitized public export`.
 - No release created.
