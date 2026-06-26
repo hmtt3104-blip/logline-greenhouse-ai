@@ -2,9 +2,9 @@
 
 ## What this is
 
-`logline-greenhouse-ai` is a Raspberry Pi greenhouse monitoring prototype with a local Flask dashboard, camera stream, reference-image matching, OpenCV person detection, Telegram alert hooks, and a mock sensor API.
+`logline-greenhouse-ai` is a Raspberry Pi greenhouse climate monitoring prototype with a local Flask dashboard, camera stream, reference-image matching, OpenCV person detection, Telegram alert hooks, and a mock sensor API.
 
-This repository is being shaped into a Logline flagship example: an engineering journal where the experiment, failures, safety boundaries, and next questions are documented alongside the code.
+This repository is a sanitized public Logline export and an early flagship example: an engineering journal where the experiment, failures, safety boundaries, and next questions are documented alongside the code.
 
 ## Problem
 
@@ -56,17 +56,16 @@ See `docs/architecture.md` for the current flow and boundaries.
 
 ## Current status
 
-Status: `Prototype / Public cleanup required`
+Status: `Prototype / Sanitized public export`
 
-The code represents a working prototype direction, but this repository is not yet Logline flagship-ready.
+This clean export is safe to present as a public Logline experiment repo, but the code remains a prototype and is not a finished deployment package.
 
 Image cleanup status:
 
-- `reference/me.jpg` removed from current tree.
-- `reference/last_test.jpg` removed from current tree.
-- `test.jpg` removed from current tree.
-
-Historical GitHub history may still need review before flagship/public-ready status.
+- Real reference images are not committed.
+- `reference/` contains only usage notes.
+- `images/` contains only public-image guidance.
+- This export does not include old working-repository Git history.
 
 ## Results / Lessons
 
@@ -81,8 +80,8 @@ Historical GitHub history may still need review before flagship/public-ready sta
 
 - Real sensor drivers are not implemented yet.
 - The dashboard currently has no authentication layer.
-- Default dashboard host behavior needs safer documentation and likely safer defaults before public flagship use.
-- Committed reference/test images were removed from the current tree, but Git history still needs public-readiness review.
+- Default dashboard host behavior needs safer documentation and likely safer defaults before any LAN-exposed use.
+- Earlier working-repository image artifacts are intentionally not included in this public export.
 - Initial experiment records are drafts and need validation.
 - `docs/`, `hardware/`, `images/`, and `data/` are only being introduced now.
 
@@ -97,20 +96,20 @@ Historical GitHub history may still need review before flagship/public-ready sta
 
 ## Safety / Security notes
 
-Before this repository is pinned or treated as public-ready, review it with the Logline public cleanup checklist.
+Before this repository is pinned or treated as flagship-ready, review it with the Logline public cleanup checklist.
 
-Current status: `Public cleanup required`.
+Current status: `Sanitized public export`.
 
 Important boundaries:
 
 - Do not commit real `.env` files.
 - Do not commit Telegram bot tokens or chat IDs.
-- Do not commit production deployment configs.
+- Do not commit deployment configs from real systems.
 - Do not expose a live dashboard publicly without authentication and network controls.
 - Treat camera frames and reference images as sensitive.
 - Strip EXIF metadata from any public images.
 - Real reference images are not committed; use local private images only.
-- Historical image artifacts may still exist in Git history and should be reviewed before flagship public use.
+- This public export does not include the old working-repository Git history.
 
 See `docs/safety.md` for detailed safety notes.
 
