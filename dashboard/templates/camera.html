@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block title %}Camera — greenhouse_ai{% endblock %}
+{% block content %}
+<h1>Live camera</h1>
+<p class="lead">Stream updates continuously in the browser. On a Pi with Picamera2 enabled, you will see the real camera feed.</p>
+<div class="panel">
+  <div class="video-box">
+    <img src="{{ url_for('main.video_feed') }}" alt="Live greenhouse camera stream" width="640" height="480">
+  </div>
+  <p class="meta">Endpoint: <code>/video_feed</code> (multipart MJPEG)</p>
+</div>
+
+<div class="panel">
+  <h2>Person detection</h2>
+  <p class="lead" style="margin-top: 0.25rem;">Background HOG detection (OpenCV) runs every few seconds; alerts are limited by cooldown. Configure Telegram with <code>TELEGRAM_BOT_TOKEN</code> and <code>TELEGRAM_CHAT_ID</code>.</p>
+  <p class="meta" id="det-status">Loading…</p>
+</div>
+
+<div class="panel">
+  <h2>Reference photo</h2>
+  <p class="lead" style="margin-top: 0.25rem;">Capture a local reference photo (saved on the Pi), then test the current frame against it on demand.</p>
+
+  <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+    <button id="btn-capture-ref">Capture reference photo</button>
+    <button id="btn-test-ref" class="secondary">Test current frame against reference</button>
+    <div id="countdown" style="margin-left:0.5rem; font-weight:700; color: var(--accent);"></div>
+  </div>
+  <p class="meta" id="ref-status">—</p>
+
+  <div class="card-grid" style="margin-top: 0.75rem;">
+    <div class="card" style="padding:0.9rem;">
+      <h3 style="margin:0 0 0.5rem; font-size:1rem;">Saved reference</h3>
+      <div class="video-box">
+        <img id="img-ref" alt="Saved reference photo preview" style="display:none;" />
+      </div>
+      <p class="meta" style="margin-bottom:0;">Path: <code>reference/me.jpg</code></p>
+    </div>
+    <div class="card" style="padding:0.9rem;">
+      <h3 style="margin:0 0 0.5rem; font-size:1rem;">Last test frame</h3>
+      <div class="video-box">
+        <img id="img-test" alt="Last test frame preview" style="display:none;" />
+      </div>
+      <p class="meta" style="margin-bottom:0;">Path: <code>reference/last_test.jpg</code></p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  const detStatus = document.getElementById("det-status");
+  async function pollDetection() {
+    try {
+      const r = await fetch("{{ url_for('main.api_detection_status') }}", { cache: "no-store" });
+      const j = await r.json();
+      const en = j.detection_enabled ? "yes" : "no";
+      const ocv = j.opencv_available === false ? "no (install OpenCV)" : j.opencv_available === true ? "yes" : "unknown";
+      const last = j.last_detection_time || "never";
+      detStatus.textContent =
+        "Detection enabled: " + en +
+        " · OpenCV: " + ocv +
+        " · Last person alert: " + last +
+        " · interval " + (j.interval_sec || "?") + "s · cooldown " + (j.cooldown_sec || "?") + "s";
+    } catch (e) {
+      detStatus.textContent = "Status unavailable: " + String(e);
+    }
+  }
+  pollDetection();
+  setInterval(pollDetection, 8000);
+
+  const btnCapture = document.getElementById("btn-capture-ref");
+  const btnTest = document.getElementById("btn-test-ref");
+  const countdownEl = document.getElementById("countdown");
+  const statusEl = document.getElementById("ref-status");
+  const imgRef = document.getElementById("img-ref");
+  const imgTest = document.getElementById("img-test");
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const bust = (url) => url + (url.includes("?") ? "&" : "?") + "t=" + Date.now();
+
+  function setBusy(busy) {
+    btnCapture.disabled = busy;
+    btnTest.disabled = busy;
+    if (busy) {
+      statusEl.textContent = "Working…";
+    }
+  }
+
+  async function doCountdown() {
+    countdownEl.textContent = "";
+    for (const n of [3, 2, 1]) {
+      countdownEl.textContent = String(n);
+      await sleep(900);
+    }
+    countdownEl.textContent = "";
+  }
+
+  btnCapture.addEventListener("click", async function () {
+    setBusy(true);
+    statusEl.textContent = "Get ready…";
+    try {
+      await doCountdown();
+      const r = await fetch("{{ url_for('main.api_reference_capture') }}", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: "{}",
+      });
+      const j = await r.json();
+      statusEl.textContent = j.message || "reference photo saved";
+      if (j.reference_url) {
+        imgRef.src = bust(j.reference_url);
+        imgRef.style.display = "block";
+      }
+    } catch (e) {
+      statusEl.textContent = "Capture failed: " + String(e);
+    } finally {
+      setBusy(false);
+    }
+  });
+
+  btnTest.addEventListener("click", async function () {
+    setBusy(true);
+    try {
+      const r = await fetch("{{ url_for('main.api_reference_test') }}", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: "{}",
+      });
+      const j = await r.json();
+      // Must be exactly one of the two expected messages.
+      statusEl.textContent = j.message || "no reference match";
+      if (j.reference_url) {
+        imgRef.src = bust(j.reference_url);
+        imgRef.style.display = "block";
+      }
+      if (j.test_url) {
+        imgTest.src = bust(j.test_url);
+        imgTest.style.display = "block";
+      }
+    } catch (e) {
+      statusEl.textContent = "Test failed: " + String(e);
+    } finally {
+      setBusy(false);
+    }
+  });
+
+  // Best-effort: load existing reference preview if present.
+  const initialRefUrl = "{{ url_for('main.reference_image') }}";
+  fetch(initialRefUrl, { method: "HEAD", cache: "no-store" })
+    .then((res) => {
+      if (res.ok) {
+        imgRef.src = bust(initialRefUrl);
+        imgRef.style.display = "block";
+      }
+    })
+    .catch(() => {});
+})();
+</script>
+{% endblock %}
