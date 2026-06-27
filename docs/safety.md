@@ -84,10 +84,12 @@ If this repository contains a secret, token, chat ID, private IP, live dashboard
 
 If safety is uncertain, public readiness remains `NEEDS_CLEANUP`.
 
-## Before flagship public use
+## Before pinned, flagship, or READY use
 
 Run the Logline public repo cleanup checklist and mark the result:
 
 - `BLOCKED`
 - `NEEDS_CLEANUP`
 - `READY`
+
+Do not treat this repository as pinned, flagship-ready, release-ready, or public-readiness `READY` until the checklist result and supporting evidence are documented.
