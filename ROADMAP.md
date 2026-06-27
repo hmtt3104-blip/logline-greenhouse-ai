@@ -8,7 +8,7 @@ Public readiness: `NEEDS_CLEANUP`
 
 Production readiness: `Not production-ready`
 
-Reason: this repository is a clean public Logline export, but dashboard authentication, LAN exposure constraints, image privacy, live sensor integration, and public-readiness checklist evidence still need review before this repository can be treated as `READY`.
+Reason: this repository is a clean public Logline export, but dashboard authentication, LAN exposure constraints, live sensor integration, and hardware/camera validation still need review before this repository can be treated as `READY`.
 
 ## Near-term
 
@@ -18,7 +18,7 @@ Reason: this repository is a clean public Logline export, but dashboard authenti
 - [x] Keep private working-repository history separate from this public export.
 - [x] Make the dashboard local-only by default.
 - [x] Make person detection opt-in by default.
-- [ ] Record the public-readiness checklist result.
+- [x] Record the public-readiness checklist result.
 - [ ] Add sanitized architecture diagram or screenshot assets under `images/`.
 - [ ] Document Raspberry Pi hardware setup under `hardware/`.
 - [ ] Add authentication or document LAN-only deployment constraints.
@@ -34,7 +34,6 @@ Reason: this repository is a clean public Logline export, but dashboard authenti
 
 ## Documentation to add
 
-- [ ] Public-readiness checklist result.
 - [ ] Decision record for dashboard exposure model.
 - [ ] Decision record for Telegram integration boundary.
 - [ ] Hardware wiring/BOM notes.
@@ -55,8 +54,7 @@ Public readiness should remain `NEEDS_CLEANUP` until:
 - safety notes are current;
 - LAN exposure and authentication behavior are reviewed;
 - authentication or LAN-only constraints are decided and documented;
-- at least one real hardware/camera experiment is documented;
-- the repository has a clear public-readiness checklist result.
+- at least one real hardware/camera experiment is documented.
 
 ## Release candidates
 
