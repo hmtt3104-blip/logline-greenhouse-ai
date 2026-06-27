@@ -134,7 +134,7 @@ Image cleanup status:
 
 ## Safety / Security notes
 
-Before this repository is pinned or treated as flagship-ready, review it with the Logline public cleanup checklist.
+Before this repository is treated as pinned, flagship-ready, release-ready, or public-readiness `READY`, review it with the Logline public cleanup checklist and document the supporting evidence.
 
 Important boundaries:
 
