@@ -136,6 +136,10 @@ p.lead {
   margin-bottom: 1rem;
 }
 
+.panel.warning {
+  border-color: var(--danger);
+}
+
 .video-box {
   width: 100%;
   max-width: 640px;
