@@ -74,6 +74,22 @@ Without OpenCV:
 - person detection remains unavailable;
 - reference matching falls back to the Pillow path where possible.
 
+## Person detection optional setup
+
+Person detection is opt-in because it can save camera snapshots under `alerts/` and can send Telegram photo alerts when configured.
+
+To enable it locally:
+
+```text
+PERSON_DETECTION_ENABLED=1
+PERSON_DETECTION_INTERVAL_SEC=3
+PERSON_ALERT_COOLDOWN_SEC=60
+```
+
+`alerts/` is ignored by Git and must stay local.
+
+Do not enable person detection from a LAN-exposed dashboard unless camera privacy, authentication, network controls, and alert behavior are reviewed.
+
 ## Telegram optional setup
 
 Telegram is optional.
