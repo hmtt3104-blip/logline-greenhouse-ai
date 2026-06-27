@@ -4,7 +4,9 @@
 
 `logline-greenhouse-ai` is a Raspberry Pi greenhouse climate monitoring prototype with a local Flask dashboard, camera stream, reference-image matching, OpenCV person detection, Telegram alert hooks, and a mock sensor API.
 
-This repository is a sanitized public Logline export and an early flagship example: an engineering journal where the experiment, failures, safety boundaries, and next questions are documented alongside the code.
+This repository is a sanitized public Logline export and an early flagship candidate: an engineering journal where the experiment, failures, safety boundaries, and next questions are documented alongside the code.
+
+It is not a finished deployment package.
 
 ## Foundation
 
@@ -44,6 +46,14 @@ Current prototype:
 - sends optional Telegram alerts;
 - exposes mock environmental sensor readings.
 
+What is intentionally not treated as proven in this export:
+
+- safe LAN-exposed dashboard deployment;
+- authenticated dashboard access;
+- reliable live sensor integration;
+- production alerting behavior;
+- final camera/privacy policy for real deployments.
+
 ## Architecture
 
 ```text
@@ -64,9 +74,19 @@ See `docs/architecture.md` for the current flow and boundaries.
 
 ## Current status
 
-Status: `Prototype / Sanitized public export`
+Repository status: Prototype.
 
-This clean export is safe to present as a public Logline experiment repo, but the code remains a prototype and is not a finished deployment package.
+Public readiness: NEEDS_CLEANUP.
+
+Trust level: Medium for documentation shape and prototype behavior; low for production safety, dashboard exposure, and live hardware validation.
+
+Production readiness: Not production-ready.
+
+Reason for public readiness status:
+
+- The export is sanitized and excludes private working history, real reference images, production configs, and deployment secrets.
+- Dashboard exposure, authentication, image privacy, and live sensor integration still need review before this can be treated as `READY`.
+- Public-readiness checklist result has not yet been recorded.
 
 Image cleanup status:
 
@@ -93,6 +113,15 @@ Image cleanup status:
 - Initial experiment records are drafts and need validation.
 - `docs/`, `hardware/`, `images/`, and `data/` are only being introduced now.
 
+## Known limitations
+
+- This repository does not prove production-safe greenhouse monitoring.
+- Camera frames and reference images remain privacy-sensitive.
+- Telegram integration is optional and depends on local private configuration.
+- Sensor data is mocked until a live sensor experiment is documented.
+- Dashboard exposure is local-first and not authenticated by default.
+- No release-ready claim is made.
+
 ## Next questions
 
 - What is the safest default run mode for a local greenhouse dashboard?
@@ -105,8 +134,6 @@ Image cleanup status:
 ## Safety / Security notes
 
 Before this repository is pinned or treated as flagship-ready, review it with the Logline public cleanup checklist.
-
-Current status: `Sanitized public export`.
 
 Important boundaries:
 
