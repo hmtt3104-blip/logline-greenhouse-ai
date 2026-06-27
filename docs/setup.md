@@ -86,7 +86,13 @@ TELEGRAM_CHAT_ID=YOUR_TELEGRAM_CHAT_ID
 TELEGRAM_ALERTS_ENABLED=0
 ```
 
+The dashboard Telegram settings page may write local settings to `instance/telegram.json`.
+
+`instance/` is ignored by Git and must stay local.
+
 Do not commit Telegram tokens or chat IDs.
+
+Do not use Telegram settings from a LAN-exposed dashboard unless authentication, network controls, and the deployment intent are reviewed.
 
 ## Sensor status
 
