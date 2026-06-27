@@ -1,8 +1,9 @@
 """
 Periodic person detection using OpenCV HOG (lightweight on Raspberry Pi 4).
 
-Runs in a daemon thread: grabs frames via the existing CameraStream, detects people,
-saves snapshots under alerts/, sends Telegram photos when configured, enforces cooldown.
+Runs in a daemon thread when explicitly enabled: grabs frames via the existing
+CameraStream, detects people, saves snapshots under alerts/, sends Telegram
+photos when configured, and enforces cooldown.
 """
 
 from __future__ import annotations
@@ -50,7 +51,7 @@ def _env_bool(name: str, default: bool) -> bool:
 
 
 def person_detection_enabled() -> bool:
-    return _env_bool("PERSON_DETECTION_ENABLED", True)
+    return _env_bool("PERSON_DETECTION_ENABLED", False)
 
 
 def detection_interval_sec() -> float:
