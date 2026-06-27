@@ -10,6 +10,30 @@ This repository is a sanitized public Logline export. The private working reposi
 
 The repository remains `NEEDS_CLEANUP` until dashboard exposure, authentication, image privacy, external service configuration, and public-readiness checklist evidence are reviewed.
 
+## Public readiness checklist result
+
+Final public readiness status: NEEDS_CLEANUP.
+
+Reason:
+
+- The public tree is sanitized and excludes old working-repository history, real reference images, private runtime configuration, production configs, and deployment secrets.
+- Dashboard default is local-only, and person detection is opt-in.
+- The repository still needs authentication or formally documented LAN-only constraints before any LAN-exposed use.
+- Live sensor integration is still mock-only.
+- Hardware/camera behavior and person-detection accuracy still need documented validation.
+
+Finding statuses:
+
+| Area | Finding status | Notes |
+| --- | --- | --- |
+| Secrets and tokens | OK | `.env`, Telegram tokens, and chat IDs are local-only and ignored. |
+| Private images | OK | Real reference images and alert snapshots are not part of the public export. |
+| Old working history | OK | Public export does not include old working-repository Git history. |
+| Dashboard exposure | WARNING | Default is local-only, but LAN-exposed mode still lacks authentication and needs review. |
+| External service settings | WARNING | Telegram is optional and local-only, but dashboard settings require protected use. |
+| Live sensor integration | WARNING | Sensor data is mock-only until a live sensor experiment is documented. |
+| Hardware/camera validation | WARNING | Target Raspberry Pi/camera behavior is not yet validated in a completed experiment record. |
+
 ## Public image status
 
 This export does not include real reference images or old working-repository history.
