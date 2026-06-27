@@ -105,11 +105,11 @@ Image cleanup status:
 - Telegram alerts are useful, but require strict token handling and dashboard exposure rules.
 - Sensor integration should remain explicit: mock data now, live hardware later.
 
-## What failed
+## What failed / remains incomplete
 
 - Real sensor drivers are not implemented yet.
 - The dashboard currently has no authentication layer.
-- Default dashboard host behavior needs safer documentation and likely safer defaults before any LAN-exposed use.
+- LAN-exposed dashboard behavior still needs authentication, network controls, or formally documented LAN-only constraints.
 - Earlier working-repository image artifacts are intentionally not included in this public export.
 - Initial experiment records are drafts and need validation.
 - `docs/`, `hardware/`, `images/`, and `data/` are only being introduced now.
@@ -125,7 +125,7 @@ Image cleanup status:
 
 ## Next questions
 
-- What is the safest default run mode for a local greenhouse dashboard?
+- What authentication or LAN-only constraint should be documented before any LAN-exposed use?
 - Which camera pipeline is reliable on the target Raspberry Pi hardware?
 - Can person detection produce useful signals with acceptable false positives?
 - Which sensors should replace the mock sensor service first?
