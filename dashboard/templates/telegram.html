@@ -4,6 +4,11 @@
 <h1>Telegram</h1>
 <p class="lead">Store your bot token and chat ID for alerts. You can also set <code>TELEGRAM_BOT_TOKEN</code> and <code>TELEGRAM_CHAT_ID</code> in <code>.env</code> (they override saved file values).</p>
 
+<div class="panel warning">
+  <strong>Safety boundary:</strong>
+  use this page only in a local-only or intentionally secured setup. Saved Telegram settings are local secrets and must not be exposed through an unauthenticated LAN dashboard.
+</div>
+
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     {% for category, message in messages %}
