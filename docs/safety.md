@@ -1,8 +1,14 @@
 # Safety and Security Notes
 
-Current public-readiness status: `Sanitized public export`.
+Repository status: Prototype.
+
+Public readiness: NEEDS_CLEANUP.
+
+Production readiness: Not production-ready.
 
 This repository is a sanitized public Logline export. The private working repository is maintained separately and is not part of this public history.
+
+The repository remains `NEEDS_CLEANUP` until dashboard exposure, authentication, image privacy, external service configuration, and public-readiness checklist evidence are reviewed.
 
 ## Public image status
 
@@ -32,6 +38,8 @@ DASHBOARD_HOST=0.0.0.0
 ```
 
 `0.0.0.0` can expose the dashboard to other devices on the network. Use it only when the network exposure is intentional and protected.
+
+LAN-exposed mode without authentication, network controls, and a documented reason keeps public readiness at `NEEDS_CLEANUP`.
 
 ## External service settings
 
@@ -69,6 +77,12 @@ This repository must not contain private deployment files, private keys, Wi-Fi c
 Public documentation should use placeholders, not live infrastructure details.
 
 Do not publish production IPs, VPN details, live dashboard URLs, private network maps, logs, or real alert photos.
+
+## Status escalation
+
+If this repository contains a secret, token, chat ID, private IP, live dashboard URL, private image, or deployment map, public readiness becomes `BLOCKED` until cleaned and reviewed.
+
+If safety is uncertain, public readiness remains `NEEDS_CLEANUP`.
 
 ## Before flagship public use
 
