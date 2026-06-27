@@ -2,17 +2,21 @@
 
 ## Current status
 
-Repo status: `Prototype`
+Repository status: `Prototype`
 
-Public readiness: `SANITIZED_PUBLIC_EXPORT`
+Public readiness: `NEEDS_CLEANUP`
 
-Reason: this repository is a clean public Logline export. It does not include real reference images, old working-repository history, production configs, or deployment secrets.
+Production readiness: `Not production-ready`
+
+Reason: this repository is a clean public Logline export, but dashboard exposure, authentication, image privacy, live sensor integration, and public-readiness checklist evidence still need review before this repository can be treated as `READY`.
 
 ## Near-term
 
 - [x] Publish a sanitized public export without old working-repository history.
 - [x] Keep real reference images out of the public tree.
 - [x] Document public image and camera privacy rules.
+- [x] Keep private working-repository history separate from this public export.
+- [ ] Record the public-readiness checklist result.
 - [ ] Add sanitized architecture diagram or screenshot assets under `images/`.
 - [ ] Document Raspberry Pi hardware setup under `hardware/`.
 - [ ] Decide safe default dashboard host behavior.
@@ -29,24 +33,30 @@ Reason: this repository is a clean public Logline export. It does not include re
 
 ## Documentation to add
 
+- [ ] Public-readiness checklist result.
 - [ ] Decision record for dashboard exposure model.
 - [ ] Decision record for Telegram integration boundary.
 - [ ] Hardware wiring/BOM notes.
 - [ ] Sanitized demo images.
-- [ ] Public-readiness checklist result.
 
 ## Cleanup / review still required
 
 - [ ] Dashboard security review.
 - [ ] Confirm no production configs are present before each major public update.
 - [ ] Confirm future public images are synthetic or sanitized and metadata-stripped.
-- [ ] Keep private working-repository history separate from this public export.
+- [ ] Confirm `.env`, tokens, chat IDs, private IPs, live dashboard URLs, and private images are absent from the public tree.
 
-## Release candidates
+## Evidence required before `READY`
 
-No release should be created until:
+Public readiness should remain `NEEDS_CLEANUP` until:
 
 - setup is reproducible;
 - safety notes are current;
+- dashboard exposure behavior is reviewed;
+- authentication or LAN-only constraints are decided and documented;
 - at least one real hardware/camera experiment is documented;
 - the repository has a clear public-readiness checklist result.
+
+## Release candidates
+
+No release should be created until all `READY` evidence exists and the release notes explain what was tested and what was not tested.
