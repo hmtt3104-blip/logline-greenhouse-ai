@@ -4,7 +4,7 @@
 
 `logline-greenhouse-ai` is a Raspberry Pi greenhouse climate monitoring prototype with a local Flask dashboard, camera stream, reference-image matching, OpenCV person detection, Telegram alert hooks, and a mock sensor API.
 
-This repository is a sanitized public Logline export and an early flagship candidate: an engineering journal where the experiment, failures, safety boundaries, and next questions are documented alongside the code.
+This repository is a sanitized public Logline export: an engineering journal where the experiment, failures, safety boundaries, and next questions are documented alongside the code.
 
 It is not a finished deployment package.
 
@@ -87,6 +87,7 @@ Reason for public readiness status:
 - The export is sanitized and excludes private working history, real reference images, production configs, and deployment secrets.
 - Dashboard exposure, authentication, image privacy, and live sensor integration still need review before this can be treated as `READY`.
 - Public-readiness checklist result has not yet been recorded.
+- The repository should not be treated as pinned, flagship-ready, or release-ready until Foundation gate evidence exists.
 
 Image cleanup status:
 
@@ -120,7 +121,7 @@ Image cleanup status:
 - Telegram integration is optional and depends on local private configuration.
 - Sensor data is mocked until a live sensor experiment is documented.
 - Dashboard exposure is local-first and not authenticated by default.
-- No release-ready claim is made.
+- No pinned, flagship-ready, or release-ready claim is made.
 
 ## Next questions
 
