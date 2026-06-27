@@ -37,6 +37,8 @@ Camera frames and local alert snapshots.
 
 Public sample images must be sanitized and EXIF-stripped.
 
+Real reference images and private alert snapshots are not committed in this clean export.
+
 ## Results
 
 The detection worker exists and can save local snapshots and update public detection status.
@@ -45,7 +47,7 @@ The detection worker exists and can save local snapshots and update public detec
 
 False positives and false negatives have not been systematically measured.
 
-Committed image artifacts remain a public cleanup blocker.
+Public demo images are not yet available because any future examples must be synthetic or sanitized and metadata-stripped.
 
 ## Lessons
 
