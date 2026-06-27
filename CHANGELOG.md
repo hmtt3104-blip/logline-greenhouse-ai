@@ -17,11 +17,14 @@ All notable changes to this repository should be documented here.
 - Clarified that real reference images are local-only and are not part of this public repository.
 - Clarified that the private working repository is maintained separately from this public export.
 - Aligned public readiness language with Logline Foundation status taxonomy.
+- Changed the dashboard default host to local-only `127.0.0.1`; LAN exposure now requires explicit configuration.
+- Changed person detection to opt-in because it can save camera snapshots under `alerts/` and send photo alerts when configured.
 
 ### Security
 
 - Published this repository as a clean public export without old working-repository history.
 - Documented image, camera privacy, and private runtime configuration boundaries.
+- Added UI and setup warnings for Telegram settings, local secrets, and LAN-exposed dashboard risk.
 
 ## 2026-04-18 - Prototype snapshot
 
