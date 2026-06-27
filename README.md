@@ -85,8 +85,8 @@ Production readiness: Not production-ready.
 Reason for public readiness status:
 
 - The export is sanitized and excludes private working history, real reference images, production configs, and deployment secrets.
-- Dashboard exposure, authentication, image privacy, and live sensor integration still need review before this can be treated as `READY`.
-- Public-readiness checklist result has not yet been recorded.
+- Public-readiness checklist result is recorded in `docs/safety.md` as `NEEDS_CLEANUP`.
+- Dashboard authentication, LAN exposure constraints, live sensor integration, and hardware/camera validation still need review before this can be treated as `READY`.
 - The repository should not be treated as pinned, flagship-ready, or release-ready until Foundation gate evidence exists.
 
 Image cleanup status:
