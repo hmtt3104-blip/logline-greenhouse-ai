@@ -20,6 +20,7 @@ All notable changes to this repository should be documented here.
 - Aligned public readiness language with Logline Foundation status taxonomy.
 - Changed the dashboard default host to local-only `127.0.0.1`; LAN exposure now requires explicit configuration.
 - Changed person detection to opt-in because it can save camera snapshots under `alerts/` and send photo alerts when configured.
+- Clarified that Telegram alerting is optional, disabled for local smoke tests, and not validated as production alerting or LAN-safe settings behavior.
 
 ### Security
 
