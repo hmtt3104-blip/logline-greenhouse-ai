@@ -10,6 +10,7 @@ All notable changes to this repository should be documented here.
 - Architecture, setup, and safety documentation.
 - Initial experiment record drafts.
 - Roadmap, security, and contributing documentation.
+- Added `tests/test_no_hardware_smoke.py` for a no-hardware local dashboard smoke path covering Flask app creation, `/`, `/api/sensors`, `/api/detection/status`, mock sensors, and disabled optional integrations.
 
 ### Changed
 
