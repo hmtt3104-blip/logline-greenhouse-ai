@@ -8,7 +8,7 @@ Public readiness: `NEEDS_CLEANUP`
 
 Production readiness: `Not production-ready`
 
-Reason: this repository is a clean public Logline export, but dashboard authentication, LAN exposure constraints, live sensor integration, and hardware/camera validation still need review before this repository can be treated as `READY`.
+Reason: this repository is a clean public Logline export with local-only startup and no-hardware smoke-test coverage, but dashboard authentication, LAN exposure constraints, live sensor integration, and hardware/camera validation still need review before this repository can be treated as `READY`.
 
 ## Near-term
 
@@ -20,6 +20,7 @@ Reason: this repository is a clean public Logline export, but dashboard authenti
 - [x] Make person detection opt-in by default.
 - [x] Record the public-readiness checklist result.
 - [x] Verify local-only dashboard startup and mock sensor API without Picamera2, OpenCV, or Telegram.
+- [x] Add a no-hardware smoke test path for Flask routes, mock sensors, and disabled optional integrations.
 - [ ] Add sanitized architecture diagram or screenshot assets under `images/`.
 - [ ] Document Raspberry Pi hardware setup under `hardware/`.
 - [ ] Add authentication or document LAN-only deployment constraints.
