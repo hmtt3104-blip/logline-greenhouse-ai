@@ -16,6 +16,7 @@ All notable changes to this repository should be documented here.
 - Aligned README, architecture notes, safety notes, roadmap, and security policy with the sanitized public export model.
 - Clarified that real reference images are local-only and are not part of this public repository.
 - Clarified that the private working repository is maintained separately from this public export.
+- Documented verified local-only startup with mock sensors and without Picamera2, OpenCV, Telegram tokens, or real camera images.
 - Aligned public readiness language with Logline Foundation status taxonomy.
 - Changed the dashboard default host to local-only `127.0.0.1`; LAN exposure now requires explicit configuration.
 - Changed person detection to opt-in because it can save camera snapshots under `alerts/` and send photo alerts when configured.

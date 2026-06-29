@@ -47,6 +47,33 @@ Open:
 http://127.0.0.1:5000
 ```
 
+## Verified local-only smoke test
+
+This path has been verified without Picamera2, OpenCV, Telegram tokens, or real camera images.
+
+```powershell
+$env:DASHBOARD_HOST="127.0.0.1"
+$env:DASHBOARD_PORT="5055"
+$env:TELEGRAM_ALERTS_ENABLED="0"
+$env:PERSON_DETECTION_ENABLED="0"
+.\.venv\Scripts\python.exe main.py
+```
+
+Check:
+
+```text
+http://127.0.0.1:5055/
+http://127.0.0.1:5055/api/sensors
+```
+
+Expected result:
+
+- `/` returns `200`;
+- `/api/sensors` returns mock sensor JSON from `get_sensor_service().read_all()`;
+- Picamera2 is not required because placeholder frames are available;
+- Telegram is not required when alerts are disabled;
+- OpenCV is not required when person detection is disabled.
+
 ## Raspberry Pi / Picamera2 notes
 
 On Raspberry Pi OS, prefer system packages for camera support:

@@ -86,6 +86,7 @@ Reason for public readiness status:
 
 - The export is sanitized and excludes private working history, real reference images, production configs, and deployment secrets.
 - Public-readiness checklist result is recorded in `docs/safety.md` as `NEEDS_CLEANUP`.
+- Local-only startup has been verified with mock sensors and without Picamera2, OpenCV, or Telegram.
 - Dashboard authentication, LAN exposure constraints, live sensor integration, and hardware/camera validation still need review before this can be treated as `READY`.
 - The repository should not be treated as pinned, flagship-ready, or release-ready until Foundation gate evidence exists.
 
@@ -100,6 +101,8 @@ Image cleanup status:
 
 - Flask is enough for a small local greenhouse dashboard.
 - The app can keep running without Picamera2 by serving placeholder frames.
+- A local-only smoke test can start the dashboard on `127.0.0.1` and return `200` from `/` and `/api/sensors`.
+- `/api/sensors` currently serves mock sensor data through `get_sensor_service().read_all()`.
 - Reference capture and comparison are useful as a low-cost test path before heavier vision.
 - OpenCV HOG detection is simple enough to test on Raspberry Pi, but must be treated as experimental.
 - Telegram alerts are useful, but require strict token handling and dashboard exposure rules.
@@ -185,15 +188,20 @@ python main.py
 For safer local testing, set:
 
 ```bash
-DASHBOARD_HOST=127.0.0.1
-DASHBOARD_PORT=5000
+export DASHBOARD_HOST=127.0.0.1
+export DASHBOARD_PORT=5055
+export TELEGRAM_ALERTS_ENABLED=0
+export PERSON_DETECTION_ENABLED=0
 ```
 
 Open:
 
 ```text
-http://127.0.0.1:5000
+http://127.0.0.1:5055
+http://127.0.0.1:5055/api/sensors
 ```
+
+This local-only smoke path has been verified without Picamera2, OpenCV, Telegram tokens, or real camera images. The sensor endpoint returns mock data.
 
 Raspberry Pi camera and OpenCV setup notes are in `docs/setup.md`.
 

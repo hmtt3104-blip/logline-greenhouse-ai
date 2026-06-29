@@ -19,6 +19,7 @@ Reason: this repository is a clean public Logline export, but dashboard authenti
 - [x] Make the dashboard local-only by default.
 - [x] Make person detection opt-in by default.
 - [x] Record the public-readiness checklist result.
+- [x] Verify local-only dashboard startup and mock sensor API without Picamera2, OpenCV, or Telegram.
 - [ ] Add sanitized architecture diagram or screenshot assets under `images/`.
 - [ ] Document Raspberry Pi hardware setup under `hardware/`.
 - [ ] Add authentication or document LAN-only deployment constraints.
@@ -50,7 +51,7 @@ Reason: this repository is a clean public Logline export, but dashboard authenti
 
 Public readiness should remain `NEEDS_CLEANUP` until:
 
-- setup is reproducible;
+- local-only setup remains reproducible;
 - safety notes are current;
 - LAN exposure and authentication behavior are reviewed;
 - authentication or LAN-only constraints are decided and documented;
