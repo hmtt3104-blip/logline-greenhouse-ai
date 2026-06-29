@@ -10,13 +10,21 @@ OpenCV HOG person detection can provide a simple first signal on Raspberry Pi-cl
 
 ## Experiment
 
-Run a background worker that captures camera frames, checks for person-like detections with OpenCV HOG, saves alert snapshots, and exposes detection status.
+Run an optional background worker that captures camera frames, checks for person-like detections with OpenCV HOG, saves alert snapshots, and exposes detection status.
+
+Person detection is opt-in in the public export because it can save camera snapshots under `alerts/` and can send Telegram photo alerts when configured.
 
 ## Environment
 
 Intended runtime: Raspberry Pi OS with optional `python3-opencv`.
 
 The app should continue running when OpenCV is unavailable.
+
+Verified local-only smoke test:
+
+- OpenCV was not installed;
+- `PERSON_DETECTION_ENABLED=0`;
+- Flask app still imported, started locally, and served `/` and `/api/sensors` successfully.
 
 ## Hardware
 
@@ -41,7 +49,13 @@ Real reference images and private alert snapshots are not committed in this clea
 
 ## Results
 
-The detection worker exists and can save local snapshots and update public detection status.
+Optional detection worker: implemented.
+
+Default public behavior: disabled unless `PERSON_DETECTION_ENABLED=1`.
+
+Local smoke test without OpenCV/person detection: PASS.
+
+Field detection accuracy: NOT VALIDATED.
 
 ## Failures
 
@@ -49,24 +63,32 @@ False positives and false negatives have not been systematically measured.
 
 Public demo images are not yet available because any future examples must be synthetic or sanitized and metadata-stripped.
 
+Detection must not be treated as a security system or reliable intrusion detector without field data.
+
 ## Lessons
 
 OpenCV HOG is acceptable as a first experiment, but the result should not be treated as reliable security detection without field data.
 
+Optional computer-vision features must not block the local dashboard smoke test.
+
+Privacy-sensitive features should be opt-in by default in public exports.
+
 ## Next Question
 
-What is the false-positive rate in the actual greenhouse camera position and lighting?
+What is the false-positive rate in the actual greenhouse camera position and lighting when person detection is explicitly enabled?
 
 ## Status
 
-Documented
+Draft / optional feature implemented / disabled by default / field accuracy not validated
 
 ## Trust level
 
-Low - implementation exists, but field accuracy is not yet measured.
+Medium for optional integration boundary and local smoke-test safety.
+
+Low for detection accuracy and real greenhouse camera behavior until field-tested.
 
 ## Links
 
-- Repository: `greenhouse_ai`
+- Repository: `logline-greenhouse-ai`
 - Related docs: `docs/architecture.md`, `docs/safety.md`
-- Release:
+- Release: none
